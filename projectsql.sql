@@ -1,9 +1,9 @@
-/*select * from CovidDeaths$
+select * from CovidDeaths
 order by 3, 4
 
-select * from CovidVaccinations$
-order by 3, 4*/
- /*select location, max(total_cases) as highestinfectedrate, population, max((total_deaths/population))*100 as highestdeathpercentage
+select * from CovidVaccinations
+order by 3, 4
+select location, max(total_cases) as highestinfectedrate, population, max((total_deaths/population))*100 as highestdeathpercentage
   from CovidDeaths
   --where location like 'germany'
   group by location, population 
@@ -23,10 +23,10 @@ from CovidDeaths
 --where continent is null
 where continent is not null
 --group by date 
-  order by 1,2*/
+  order by 1,2
   
   -- joining both tables
-  /*select ded.continent, ded.location, ded.date, ded.population, vac.new_vaccinations, sum(convert(int, vac.new_vaccinations)) over (partition by ded.location order by ded.date, ded. location) as rollingcount
+*select ded.continent, ded.location, ded.date, ded.population, vac.new_vaccinations, sum(convert(int, vac.new_vaccinations)) over (partition by ded.location order by ded.date, ded. location) as rollingcount
    from CovidDeaths as ded
   join CovidVaccinations as vac
   on ded.location=vac.location
@@ -45,9 +45,9 @@ where continent is not null
    and ded.date=vac.date
    where ded.continent is not null
    --order by 2,3
-   )*/
+   )
 
-   /*select *, (rollingcount/population)*100 as percentbypopl
+   select *, (rollingcount/population)*100 as percentbypopl
    from popvsvac
 
   -- drop table if exists #percentofpopulation
@@ -72,8 +72,7 @@ where continent is not null
 
    select *,(rollingcount/population)*100
    from #percentofpopulation 
-   */
-   drop table if exists #percentofpopulation
+      drop table if exists #percentofpopulation
    CREATE TABLE #percentofpopulation 
 (
     continent varchar(255),
